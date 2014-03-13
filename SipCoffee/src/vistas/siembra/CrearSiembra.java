@@ -2,6 +2,7 @@ package vistas.siembra;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -47,75 +48,38 @@ public class CrearSiembra extends JPanel {
 		elementosSemilla = new Vector<String>();
 		elementosSemilla.add("Caturra");
 		
-		constraints.gridx = 0;
-		constraints.gridy = 0;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
+		
 		lSemilla = new JLabel("Semilla");
-		super.add(lSemilla,constraints);
-		
-		constraints.gridx = 1;
-		constraints.gridy = 0;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
 		listaSemilla = new JComboBox(elementosSemilla);
-		super.add(listaSemilla,constraints);
 		
-		constraints.gridx = 0;
-		constraints.gridy = 1;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
 		lParcela = new JLabel("Parcela");
-		super.add(lParcela,constraints);
-		
-		constraints.gridx = 1;
-		constraints.gridy = 1;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
 		listaParcela = new JComboBox(elementosParccela);
-		super.add(listaParcela,constraints);
 		
-		constraints.gridx = 0;
-		constraints.gridy = 2;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
 		lUsuario = new JLabel("Usuario");
-		super.add(lUsuario,constraints);
-		
-		constraints.gridx = 1;
-		constraints.gridy = 2;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
 		tUsuario = new JTextField(10);
-		super.add(tUsuario,constraints);
 		
-		constraints.gridx = 0;
-		constraints.gridy = 3;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
 		lCantidad = new JLabel("Cantidad");
-		super.add(lCantidad,constraints);
-		
-		constraints.gridx = 1;
-		constraints.gridy = 3;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
 		tCantidad = new JTextField(10);
-		super.add(tCantidad,constraints);
 		
-		constraints.gridx = 0;
-		constraints.gridy = 4;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
 		btnAceptar = new JButton("Aceptar");
-		super.add(btnAceptar,constraints);
-		
-		constraints.gridx = 1;
-		constraints.gridy = 4;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
 		btnCancelar = new JButton("Cancelar");
-		super.add(btnCancelar,constraints);
+		
+		
+		
+		super.add(lSemilla, new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,2) ,1,1) );
+		super.add(listaSemilla, new GridBagConstraints(1,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,2,2,10) ,1,1) );
+		
+		super.add(lParcela,new GridBagConstraints(0,1,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2) ,1,1) );
+		super.add(listaParcela,new GridBagConstraints(1,1,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10) ,1,1) );
+		
+		super.add(lUsuario,new GridBagConstraints(0,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2) ,1,1) );
+		super.add(tUsuario,new GridBagConstraints(1,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10) ,1,1) );
+		
+		super.add(lCantidad,new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2) ,1,1) );
+		super.add(tCantidad,new GridBagConstraints(1,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10) ,1,1) );
+		
+		super.add(btnAceptar,new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,10,2) ,1,1) );
+		super.add(btnCancelar,new GridBagConstraints(1,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,10,10) ,1,1) );
 		
 	}
 
