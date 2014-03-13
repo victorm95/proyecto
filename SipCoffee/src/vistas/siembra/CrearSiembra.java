@@ -32,13 +32,10 @@ public class CrearSiembra extends JPanel {
 	private Vector<String> elementosSemilla;
 	private Vector<String> elementosParccela;
 	
-	private GridBagConstraints constraints;
-	
 	//Constructor 
 	public CrearSiembra(){
 		
 		super.setLayout( new GridBagLayout() );
-		constraints = new GridBagConstraints();
 		
 		elementosParccela = new Vector<String>();
 		elementosParccela.add("Parcela 1");
