@@ -28,10 +28,9 @@ public class CrearRol extends JPanel {
 	private JButton btnCancelar;
 	private JButton btnEliminar;
 	
-	private JTable lista;
+	private JList lista;
 	
 	private Vector<String> elemtLista;
-	private Vector<String> tituloLista;
 	
 	//Constructor
 	public CrearRol(){
@@ -45,12 +44,8 @@ public class CrearRol extends JPanel {
 		
 		tNombre = new JTextField(10);
 		
-		
-		
-		tituloLista = new Vector<String>();
-		tituloLista.add("Rol");
 
-		lista = new JTable(elemtLista,tituloLista);
+		lista = new JList(elemtLista);
 		
 		
 		
@@ -79,7 +74,7 @@ public class CrearRol extends JPanel {
 		btnEliminar.addActionListener( new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				/*if(!lista.isSelectionEmpty()){
+				if(!lista.isSelectionEmpty()){
 					try{
 						elemtLista.remove( lista.getSelectedIndex() ); 
 						lista.updateUI();
@@ -88,7 +83,7 @@ public class CrearRol extends JPanel {
 					}finally{
 						tNombre.setText("");
 					}
-				}*/
+				}
 			}
 		});
 				
