@@ -35,8 +35,6 @@ public class CrearSiembra extends JPanel {
 	//Constructor 
 	public CrearSiembra(){
 		
-		super.setLayout( new GridBagLayout() );
-		
 		elementosParccela = new Vector<String>();
 		elementosParccela.add("Parcela 1");
 		elementosParccela.add("Parcela 2");
@@ -61,7 +59,8 @@ public class CrearSiembra extends JPanel {
 		btnAceptar = new JButton("Aceptar");
 		btnCancelar = new JButton("Cancelar");
 		
-		
+
+		super.setLayout( new GridBagLayout() );
 		
 		super.add(lSemilla, new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,2) ,1,1) );
 		super.add(listaSemilla, new GridBagConstraints(1,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,2,2,10) ,1,1) );
