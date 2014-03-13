@@ -1,4 +1,4 @@
-proyecto
+Proyecto
 ========
 
 Proyecto formación SENA.
