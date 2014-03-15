@@ -1,5 +1,7 @@
 package Main;
 
+import javax.swing.JFrame;
+
 import vistas.Ventana;
 import vistas.menu.Menu;
 
@@ -15,6 +17,7 @@ public class Main {
 		ventana.setJMenuBar(menu);
 		ventana.pack();
 		ventana.setLocationRelativeTo(null);
+		ventana.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 
 }
