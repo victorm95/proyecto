@@ -36,11 +36,16 @@ public class RolController {
 			while(result.next()){
 				retorno.add( new Rol(result.getInt("Id") , result.getString("Nombre")).toVector() );
 			}
+			
+			conexion.close();
+			driver.desconectar();
 				
 			return retorno;
 		}catch(Exception e){
 			System.out.println("Error: " + e.getMessage() );
 			return null;
+		}finally{
+			
 		}
 	}
 	
