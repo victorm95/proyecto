@@ -8,14 +8,14 @@ import modelos.Rol;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.ResultSet;
 
-public class RolController {
-	
+public class TerrenoController {
+
 	//Atributos
 	private Conexion driver;
 	private Connection conexion; 
 	
 	//Constructor
-	public RolController(){
+	public TerrenoController(){
 		driver = new Conexion("localhost","","","test");
 	}
 	
@@ -49,14 +49,4 @@ public class RolController {
 		}
 	}
 	
-	
-	/*
-	
-	private class Rol extends Vector{
-		private Rol(int id,String rol){
-			super.add(id);
-			super.add(rol);
-		}
-	}*/
-
 }

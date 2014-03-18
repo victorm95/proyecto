@@ -13,11 +13,18 @@ public class Rol {
 		this.rol = rol;
 	}
 	
+	/*-----------------------------|Getters|---------------------------------*/
 	
+	public String getRol(){
+		return this.rol;
+	}
 	
-	public Vector toVector(){
-		Vector v = new Vector();
-		//v.add(this.id);
+	public int getId(){
+		return this.id;
+	}
+	
+	public Vector<String> toVector(){
+		Vector<String> v = new Vector<String>();
 		v.add(this.rol);
 		return v;
 	}

@@ -28,7 +28,7 @@ public class CrearRol extends JPanel {
 	private JTable roles;
 	
 	private Vector<String> titulo;
-	private Vector<Vector> data;
+	private Vector<Object> data;
 	
 	private RolController controlador;
 	

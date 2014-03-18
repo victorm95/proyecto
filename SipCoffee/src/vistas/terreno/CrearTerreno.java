@@ -1,18 +1,19 @@
 package vistas.terreno;
 
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class CrearTerreno extends JPanel {
 	
 	//Componentes Graficos
-	private JLabel lTitulo;
 	private JLabel lNombre;
 	private JLabel lMunicipio;
 	private JLabel lDireccion;
@@ -23,92 +24,60 @@ public class CrearTerreno extends JPanel {
 	private JTextField tDireccion;
 	private JTextField tArea;
 	
+	private JTable tabla;
+	private Vector<String> titulo;
+	private Vector<Object> data;
+	
 	public JButton btnAceptar;
 	public JButton btnCancelar;
 	
-	private Font fuenteTexto;
 	
 	// Constructor
 	public CrearTerreno(){
+			
 		
-		fuenteTexto = new Font("Arial",Font.PLAIN,20);
+		titulo = new Vector<String>();
+		titulo.add("Municipio");
+		titulo.add("Nombre");
+		titulo.add("Direccion");
+		titulo.add("Area");
 		
+		data = new Vector<Object>();
 		
-		super.setLayout(new GridBagLayout());
-		GridBagConstraints constraints = new GridBagConstraints();
+		tabla = new JTable(data,titulo);
 		
 		lNombre = new JLabel("Nombre ");
-		constraints.gridx = 0;
-		constraints.gridy = 0;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		constraints.anchor = GridBagConstraints.WEST;
-		super.add (lNombre, constraints);
-		
-		JTextField campoTexto = new JTextField (10);
-		constraints.gridx = 1;
-		constraints.gridy = 0;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		super.add (campoTexto, constraints);
+		tNombre = new JTextField (10);
 		
 		lMunicipio = new JLabel ("Municipio ");
-		constraints.gridx = 0;
-		constraints.gridy = 1;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		super.add (lMunicipio, constraints);
-		
 		tMunicipio = new JTextField (10);
-		constraints.gridx = 1;
-		constraints.gridy = 1;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		super.add (tMunicipio, constraints);
 		
 		lDireccion = new JLabel ("Direccion ");
-		constraints.gridx = 0;
-		constraints.gridy = 2;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		super.add (lDireccion, constraints);
-		
-		JTextField campoDireccion = new JTextField (10);
-		constraints.gridx = 1;
-		constraints.gridy = 2;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		super.add (campoDireccion, constraints);
+		tDireccion = new JTextField (10);
 		
 		lArea = new JLabel ("Area ");
-		constraints.gridx = 0;
-		constraints.gridy = 3;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		super.add (lArea, constraints);
-		
-		JTextField campoArea = new JTextField (10);
-		constraints.gridx = 1;
-		constraints.gridy = 3;
-		constraints.gridwidth = 1;
-		constraints.gridheight = 1;
-		super.add (campoArea, constraints);
+		tArea = new JTextField (10);
 		
 		btnAceptar = new JButton ("Aceptar");
-		constraints.gridx = 0; 
-		constraints.gridy = 4; 
-		constraints.gridwidth = 1; 
-		constraints.gridheight = 1;
-		super.add (btnAceptar, constraints);
-
 		btnCancelar = new JButton ("Cancelar");
-		constraints.gridx = 1; 
-		constraints.gridy = 4; 
-		constraints.gridwidth = 1; 
-		constraints.gridheight = 1;
-		super.add (btnCancelar, constraints);
 		
+
+		super.setLayout(new GridBagLayout());
 		
+		super.add (lNombre, new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,2) ,1,1) );
+		super.add (tNombre, new GridBagConstraints(1,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,2,2,10) ,1,1) );
+		
+		super.add (lMunicipio, new GridBagConstraints(0,1,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2) ,1,1) );
+		super.add (tMunicipio, new GridBagConstraints(1,1,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10) ,1,1) );
+		
+		super.add (lDireccion, new GridBagConstraints(0,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2) ,1,1) );
+		super.add (tDireccion, new GridBagConstraints(1,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10) ,1,1) );
+		
+		super.add (lArea, new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2) ,1,1) );
+		super.add (tArea, new GridBagConstraints(1,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10) ,1,1) );
+		
+		super.add (btnAceptar, new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2) ,1,1) );
+		super.add (btnCancelar, new GridBagConstraints(1,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10) ,1,1) );
 		
 	}
 
