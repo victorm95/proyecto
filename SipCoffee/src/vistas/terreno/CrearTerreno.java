@@ -1,5 +1,6 @@
 package vistas.terreno;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -34,6 +35,8 @@ public class CrearTerreno extends JPanel {
 	public JButton btnAceptar;
 	public JButton btnCancelar;
 	
+	private JScrollPane scroll;
+	
 	private TerrenoController controlador;
 	
 	
@@ -51,7 +54,8 @@ public class CrearTerreno extends JPanel {
 		data = controlador.all();
 		
 		tabla = new JTable(data,titulo);
-		
+		scroll = new JScrollPane(tabla);
+		scroll.setPreferredSize(new Dimension(300,150));
 		
 		lNombre = new JLabel("Nombre ");
 		tNombre = new JTextField (10);
@@ -86,7 +90,7 @@ public class CrearTerreno extends JPanel {
 		super.add (btnAceptar, new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2) ,1,1) );
 		super.add (btnCancelar, new GridBagConstraints(1,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10) ,1,1) );
 		
-		super.add(new JScrollPane(tabla),new GridBagConstraints(3,0,2,4,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,2,10,10) ,1,1) );
+		super.add(scroll,new GridBagConstraints(3,0,2,5,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,2,10,10) ,1,1) );
 		
 	}
 

@@ -1,5 +1,6 @@
 package vistas.rol;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -8,6 +9,7 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -25,7 +27,8 @@ public class CrearRol extends JPanel {
 	private JButton btnCancelar;
 	private JButton btnEliminar;
 	
-	private JTable roles;
+	private JTable tabla;
+	private JScrollPane scroll;
 	
 	private Vector<String> titulo;
 	private Vector<Object> data;
@@ -40,14 +43,13 @@ public class CrearRol extends JPanel {
 		titulo.add("Rol");
 		
 		data = controlador.all();
-		
+
+		tabla = new JTable(data,titulo);
+		scroll = new JScrollPane(tabla);
+		scroll.setPreferredSize(new Dimension(150,150));
 		
 		lNombre = new JLabel("Nombre");
 		tNombre = new JTextField(10);
-		
-
-		roles = new JTable(data,titulo);
-		
 		
 		btnGuardar = new JButton("Guargar");
 		btnCancelar = new JButton("Cancelar");
@@ -63,7 +65,7 @@ public class CrearRol extends JPanel {
 		super.add(btnCancelar , new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
 		super.add(btnEliminar , new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,10,2) ,1,1) );
 		
-		super.add(roles , new GridBagConstraints(1,0,2,4,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,10) ,1,1) );
+		super.add(scroll, new GridBagConstraints(1,0,2,4,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,10) ,1,1) );
 		
 	}
 	
