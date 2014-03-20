@@ -23,6 +23,19 @@ public class RolController {
 	
 	//Acciones
 	
+	public boolean nuevoRol(String rol){
+		conexion = (Connection)driver.conectar();
+		try{
+			conexion.createStatement().executeQuery("INSERT INTO roles(nombre) VALUES('"+rol+"');");
+			conexion.close();
+			driver.desconectar();
+			return true;
+		}catch(Exception e){
+			System.out.println("Error: " + e.getMessage());
+			return false;
+		}
+	}
+	
 	/** Consulta todos los Roles y los devuelve en forma de Vector */
 	public Vector all(){
 		ResultSet result;
