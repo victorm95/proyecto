@@ -8,8 +8,11 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import controladores.TerrenoController;
 
 public class CrearTerreno extends JPanel {
 	
@@ -31,10 +34,13 @@ public class CrearTerreno extends JPanel {
 	public JButton btnAceptar;
 	public JButton btnCancelar;
 	
+	private TerrenoController controlador;
+	
 	
 	// Constructor
 	public CrearTerreno(){
 			
+		controlador = new TerrenoController();
 		
 		titulo = new Vector<String>();
 		titulo.add("Municipio");
@@ -42,9 +48,10 @@ public class CrearTerreno extends JPanel {
 		titulo.add("Direccion");
 		titulo.add("Area");
 		
-		data = new Vector<Object>();
+		data = controlador.all();
 		
 		tabla = new JTable(data,titulo);
+		
 		
 		lNombre = new JLabel("Nombre ");
 		tNombre = new JTextField (10);
@@ -78,6 +85,8 @@ public class CrearTerreno extends JPanel {
 		
 		super.add (btnAceptar, new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2) ,1,1) );
 		super.add (btnCancelar, new GridBagConstraints(1,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10) ,1,1) );
+		
+		super.add(new JScrollPane(tabla),new GridBagConstraints(3,0,2,4,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,2,10,10) ,1,1) );
 		
 	}
 

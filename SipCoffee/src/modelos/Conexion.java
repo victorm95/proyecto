@@ -11,13 +11,12 @@ public class Conexion {
 	private String server;
 	private String db;
 	
-	//Constructor
-	public Conexion(){}
-	
-	public Conexion(String server , String user , String pass , String db){
-		this.user = user;
-		this.pass = pass;
-		this.db = db;
+	//Constructor	
+	public Conexion(){
+		this.user = "root";
+		this.pass = "";
+		this.db = "sipcoffee";
+		this.server = "localhost";
 		this.server = "jdbc:mysql://" + server + "/" + this.db;
 	}
 	
@@ -49,23 +48,5 @@ public class Conexion {
 		return this.conexion;
 	}
 	
-	
-	/*--------------------------Setters-------------------------------*/
-	
-	public void setServer(String server){
-		this.server = "jdbc:mysql://" + server + "/" + this.db;
-	}
-	
-	public void setUser(String user){
-		this.user = user;
-	}
-	
-	public void setPass(String pass){
-		this.pass = pass;
-	}
-	
-	public void setDb(String db){
-		this.db = db;
-	}
 
 }

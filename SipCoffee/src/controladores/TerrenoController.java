@@ -16,7 +16,7 @@ public class TerrenoController {
 	
 	//Constructor
 	public TerrenoController(){
-		driver = new Conexion("localhost","","","test");
+		driver = new Conexion();
 	}
 	
 	
@@ -25,28 +25,7 @@ public class TerrenoController {
 	
 	/** Consulta todos los Roles y los devuelve en forma de Vector */
 	public Vector all(){
-		ResultSet result;
-		Vector<Vector<String>> retorno;
-		try{
-			conexion = (Connection)driver.conectar();
-			retorno = new Vector<Vector<String>>();
-			result = (ResultSet)conexion.createStatement().executeQuery("SELECT * FROM Rol;");
-			
-			
-			while(result.next()){
-				retorno.add( new Rol(result.getInt("Id") , result.getString("Nombre")).toVector() );
-			}
-			
-			conexion.close();
-			driver.desconectar();
-				
-			return retorno;
-		}catch(Exception e){
-			System.out.println("Error: " + e.getMessage() );
-			return null;
-		}finally{
-			
-		}
+		return null;
 	}
 	
 }

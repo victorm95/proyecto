@@ -16,7 +16,7 @@ public class RolController {
 	
 	//Constructor
 	public RolController(){
-		driver = new Conexion("localhost","","","test");
+		driver = new Conexion();
 	}
 	
 	
@@ -44,8 +44,6 @@ public class RolController {
 		}catch(Exception e){
 			System.out.println("Error: " + e.getMessage() );
 			return null;
-		}finally{
-			
 		}
 	}
 	
