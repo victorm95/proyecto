@@ -79,7 +79,7 @@ public class CrearRol extends JPanel implements ActionListener {
 
 		if(e.getSource() == btnGuardar){
 			
-			if( !tNombre.getText().equals("") && controlador.nuevoRol(tNombre.getText())  ){
+			if( !tNombre.getText().equals("") && controlador.nuevo(tNombre.getText())  ){
 				
 				JOptionPane.showMessageDialog(this, "El Rol  "+tNombre.getText()+" ha sido creado exitosamente.","Registro Exitoso",JOptionPane.INFORMATION_MESSAGE);
 				data.clear();
