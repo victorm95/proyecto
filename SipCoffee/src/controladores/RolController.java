@@ -26,7 +26,7 @@ public class RolController {
 	public boolean nuevoRol(String rol){
 		conexion = (Connection)driver.conectar();
 		try{
-			conexion.createStatement().executeQuery("INSERT INTO roles(nombre) VALUES('"+rol+"');");
+			conexion.createStatement().executeUpdate("INSERT INTO Roles(nombre) VALUES('"+rol+"');");
 			conexion.close();
 			driver.desconectar();
 			return true;
@@ -43,7 +43,7 @@ public class RolController {
 		try{
 			conexion = (Connection)driver.conectar();
 			retorno = new Vector<Vector<String>>();
-			result = (ResultSet)conexion.createStatement().executeQuery("SELECT * FROM Rol;");
+			result = (ResultSet)conexion.createStatement().executeQuery("SELECT * FROM Roles;");
 			
 			
 			while(result.next()){
@@ -60,14 +60,5 @@ public class RolController {
 		}
 	}
 	
-	
-	/*
-	
-	private class Rol extends Vector{
-		private Rol(int id,String rol){
-			super.add(id);
-			super.add(rol);
-		}
-	}*/
 
 }

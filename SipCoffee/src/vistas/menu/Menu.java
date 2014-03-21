@@ -209,6 +209,7 @@ public class Menu extends JMenuBar implements ActionListener {
 		dialogo.pack();
 		dialogo.setLocationRelativeTo(ventana);
 		dialogo.setVisible(true);
+		dialogo.dispose();
 	}
 	//Fin crearDialogo()
 		
