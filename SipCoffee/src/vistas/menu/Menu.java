@@ -13,7 +13,7 @@ import vistas.Ventana;
 import vistas.bloque.CrearBloque;
 import vistas.cosecha.CrearCosecha;
 import vistas.parcela.CrearParcela;
-import vistas.rol.CrearRol;
+import vistas.rol.AdminRol;
 import vistas.siembra.CrearSiembra;
 import vistas.terreno.CrearTerreno;
 import vistas.terreno.EditarTerreno;
@@ -25,44 +25,27 @@ public class Menu extends JMenuBar implements ActionListener {
 	
 	//Menu Terreno
 	private JMenu terreno;
-	private JMenuItem crearTerreno;
-	private JMenuItem modificarTerreno;
-	private JMenuItem consultarTerreno;
-	private JMenuItem eliminarTerreno;
+	private JMenuItem adminTerreno;
 	
 	//Menu Bloque
 	private JMenu bloque;
-	private JMenuItem crearBloque;
-	private JMenuItem modificarBloque;
-	private JMenuItem consultarBloque;
-	private JMenuItem eliminarBloque;
+	private JMenuItem adminBloque;
 	
 	//Menu Parcela
 	private JMenu parcela;
-	private JMenuItem crearParcela;
-	private JMenuItem modificarParcela;
-	private JMenuItem consultarParcela;
-	private JMenuItem eliminarParcela;
+	private JMenuItem adminParcela;
 	
 	//Menu Siembra
 	private JMenu siembra;
-	private JMenuItem crearSiembra;
-	private JMenuItem modificarSiembra;
-	private JMenuItem consultarSiembra;
-	private JMenuItem eliminarSiembra;
+	private JMenuItem adminSiembra;
 	
 	//Menu Cosecha
 	private JMenu cosecha;
-	private JMenuItem crearCosecha;
-	private JMenuItem modificarCosecha;
-	private JMenuItem consultarCosecha;
-	private JMenuItem eliminarCosecha;
+	private JMenuItem adminCosecha;
 	
 	//Menu Rol
 	private JMenu rol;
-	private JMenuItem crearRol;
-	private JMenuItem modificarRol;
-	private JMenuItem eliminarRol;
+	private JMenuItem adminRol;
 	
 	private JMenu archivo;
 	private JMenuItem salir;	
@@ -81,110 +64,59 @@ public class Menu extends JMenuBar implements ActionListener {
 
 		//Menu de Terreno
 		terreno = new JMenu("Terreno");
-		crearTerreno = new JMenuItem("Crear");
-		modificarTerreno = new JMenuItem("Modificar");
-		consultarTerreno = new JMenuItem("Consultar");
-		eliminarTerreno = new JMenuItem("Eliminar");
-		terreno.add(crearTerreno);
-		terreno.add(modificarTerreno);
-		terreno.add(consultarTerreno);
-		terreno.add(eliminarTerreno);
+		adminTerreno = new JMenuItem("Administrar");
+		terreno.add(adminTerreno);
 		
 		//Menu de Bloque
 		bloque = new JMenu("Bloque");
-		crearBloque = new JMenuItem("Crear");
-		modificarBloque = new JMenuItem("Modificar");
-		consultarBloque = new JMenuItem("Consultar");
-		eliminarBloque = new JMenuItem("Eliminar");
-		bloque.add(crearBloque);
-		bloque.add(modificarBloque);
-		bloque.add(consultarBloque);
-		bloque.add(eliminarBloque);
+		adminBloque = new JMenuItem("Administrar");
+		bloque.add(adminBloque);
 		
 		//Menu de Parcela
 		parcela = new JMenu("Parcela");
-		crearParcela = new JMenuItem("Crear");
-		modificarParcela = new JMenuItem("Modificar");
-		consultarParcela = new JMenuItem("Consultar");
-		eliminarParcela = new JMenuItem("Eliminar");
-		parcela.add(crearParcela);
-		parcela.add(modificarParcela);
-		parcela.add(consultarParcela);
-		parcela.add(eliminarParcela);
+		adminParcela = new JMenuItem("Administrar");
+		parcela.add(adminParcela);
 		
 		//Menu de Parcela
 		siembra = new JMenu("Siembra");
-		crearSiembra = new JMenuItem("Crear");
-		modificarSiembra = new JMenuItem("Modificar");
-		consultarSiembra = new JMenuItem("Consultar");
-		eliminarSiembra = new JMenuItem("Eliminar");
-		siembra.add(crearSiembra);
-		siembra.add(modificarSiembra);
-		siembra.add(consultarSiembra);
-		siembra.add(eliminarSiembra);
+		adminSiembra = new JMenuItem("Administrar");
+		siembra.add(adminSiembra);
 		
 		//Menu de Parcela
 		cosecha = new JMenu("Cosecha");
-		crearCosecha = new JMenuItem("Crear");
-		modificarCosecha = new JMenuItem("Modificar");
-		consultarCosecha = new JMenuItem("Consultar");
-		eliminarCosecha = new JMenuItem("Eliminar");
-		cosecha.add(crearCosecha);
-		cosecha.add(modificarCosecha);
-		cosecha.add(consultarCosecha);
-		cosecha.add(eliminarCosecha);
+		adminCosecha = new JMenuItem("Administrar");
+		cosecha.add(adminCosecha);
 		
 		
 		// Menu Rol
 		rol = new JMenu("Rol");
-		crearRol = new JMenuItem("Crear");
-		modificarRol = new JMenuItem("Modificar");
-		eliminarRol = new JMenuItem("Eliminar");
-		rol.add(crearRol);
-		rol.add(modificarRol);
-		rol.add(eliminarRol);
-		
+		adminRol = new JMenuItem("Administrar");
+		rol.add(adminRol);
 		
 		
 		/*------------------------------------------- Eventos ---------------------------------------------*/
 		
 		//Menu Terreno
-		crearTerreno.addActionListener(this);
-		modificarTerreno.addActionListener(this);
-		consultarTerreno.addActionListener(this);
-		eliminarTerreno.addActionListener(this);
+		adminTerreno.addActionListener(this);
 		
 		//Menu Bloque
-		crearBloque.addActionListener(this);
-		modificarBloque.addActionListener(this);
-		consultarBloque.addActionListener(this);
-		eliminarBloque.addActionListener(this);
+		adminTerreno.addActionListener(this);
 		
 		//Menu Parcela
-		crearParcela.addActionListener(this);
-		modificarParcela.addActionListener(this);
-		consultarParcela.addActionListener(this);
-		eliminarParcela.addActionListener(this);
+		adminTerreno.addActionListener(this);
 		
 		//Menu Siembra
-		crearSiembra.addActionListener(this);
-		modificarSiembra.addActionListener(this);
-		consultarSiembra.addActionListener(this);
-		eliminarSiembra.addActionListener(this);
+		adminSiembra.addActionListener(this);
 		
 		//Menu Cosecha
-		crearCosecha.addActionListener(this);
-		modificarCosecha.addActionListener(this);
-		consultarCosecha.addActionListener(this);
-		eliminarCosecha.addActionListener(this);
+		adminCosecha.addActionListener(this);
 		
 		//Menu Rol
-		crearRol.addActionListener(this);
+		adminRol.addActionListener(this);
 		
 		
 		salir.addActionListener(this);
 
-		
 		
 		archivo.add(salir);
 		
@@ -220,45 +152,42 @@ public class Menu extends JMenuBar implements ActionListener {
 	public void actionPerformed(ActionEvent e){
 		
 		//Validacion para Terreno
-		if(e.getSource() == crearTerreno){
+		if(e.getSource() == adminTerreno){
 			crearDialogo( new CrearTerreno() );
-		}else if(e.getSource() == modificarTerreno){
-			crearDialogo( new EditarTerreno() );
 		}
 		//Fin de Terreno
 		
 		
 		//Validacion para Bloque
-		if(e.getSource() == crearBloque){
+		if(e.getSource() == adminBloque){
 			crearDialogo( new CrearBloque() );
 		}
 		//Fin de Bloque
 		
 		
 		//Validacion para Parcela
-		if(e.getSource() == crearParcela){
+		if(e.getSource() == adminParcela){
 			crearDialogo( new CrearParcela() );
 		}
 		//Fin Parcela
 		
 		//alidacion para Siembra
-		if(e.getSource() == crearSiembra){
+		if(e.getSource() == adminSiembra){
 			crearDialogo( new CrearSiembra() );
 		}
 		
 		
 		//Validacion para cosecha
-		if(e.getSource() == crearCosecha){
+		if(e.getSource() == adminCosecha){
 			crearDialogo( new CrearCosecha() );
 		}
 		
 		//Validacion para Rol
-		if(e.getSource() == crearRol){
-			crearDialogo( new CrearRol() );
+		if(e.getSource() == adminRol){
+			crearDialogo( new AdminRol() );
 		}
 		
 
-		
 		//Validacion para Salir
 		if(e.getSource() == salir ){
 			System.exit(0);

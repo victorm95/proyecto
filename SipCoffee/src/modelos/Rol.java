@@ -19,6 +19,10 @@ public class Rol extends Conexion{
 		this.rol = rol;
 	}
 	
+	public Rol(String rol){
+		this.rol = rol;
+	}
+	
 	/*-----------------------------|Getters|---------------------------------*/
 	
 	public String getRol(){
@@ -29,16 +33,11 @@ public class Rol extends Conexion{
 		return this.id;
 	}
 	
-	public Vector<String> toVector(){
-		Vector<String> v = new Vector<String>();
-		v.add(this.rol);
-		return v;
-	}
 	
 	
 	/*---------------------------------|Acciones|------------------------------------*/
 	/** Crea un nuevo Rol */
-	public boolean nuevo(String rol){
+	public boolean insert(String rol){
 		Connection conexion = (Connection)super.conectar();
 		try{
 			conexion.createStatement().executeUpdate("INSERT INTO Roles(nombre) VALUES('"+rol+"');");
@@ -53,16 +52,16 @@ public class Rol extends Conexion{
 	
 	
 	/** Consulta todos los Roles y los devuelve en forma de Vector */
-	public Vector all(){
+	public Vector<String> selectAll(){
 		ResultSet result;
-		Vector<Vector<String>> retorno;
+		Vector<String> retorno;
 		Connection conexion;
 		try{
 			conexion = (Connection)super.conectar();
-			retorno = new Vector<Vector<String>>();
+			retorno = new Vector<String>();
 			result = (ResultSet)conexion.createStatement().executeQuery("SELECT * FROM Roles;");
 			while(result.next()){
-				retorno.add( new Rol(result.getInt("Id") , result.getString("Nombre")).toVector() );
+				retorno.add( result.getString("Nombre") );
 			}
 			conexion.close();
 			return retorno;
@@ -71,4 +70,13 @@ public class Rol extends Conexion{
 			return null;
 		}
 	}
+	
+	
+
+	public Vector<String> toVector(){
+		Vector<String> v = new Vector<String>();
+		v.add(this.rol);
+		return v;
+	}
+	
 }
