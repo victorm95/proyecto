@@ -1,27 +1,34 @@
 package vistas.terreno;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import vistas.Ventana;
 import controladores.TerrenoController;
 
-public class CrearTerreno extends JPanel {
+public class CrearTerreno extends JPanel implements ActionListener{
 	
 	//Componentes Graficos
 	private JLabel lNombre;
 	private JLabel lMunicipio;
 	private JLabel lDireccion;
 	private JLabel lArea;
+	private JLabel lImagenFinca;
 	
 	private JTextField tNombre;
 	private JTextField tMunicipio;
@@ -31,9 +38,11 @@ public class CrearTerreno extends JPanel {
 	private JTable tabla;
 	private Vector<String> titulo;
 	private Vector<Object> data;
+	private String path;
 	
 	public JButton btnAceptar;
 	public JButton btnCancelar;
+	public JButton btnExaminar;
 	
 	private JScrollPane scroll;
 	
@@ -69,10 +78,14 @@ public class CrearTerreno extends JPanel {
 		lArea = new JLabel ("Area ");
 		tArea = new JTextField (10);
 		
-		btnAceptar = new JButton ("Aceptar");
-		btnCancelar = new JButton ("Cancelar");
+		lImagenFinca=new JLabel("Imagen");
+		btnExaminar=new JButton("Examinar");
 		
-
+		btnAceptar = new JButton ("Aceptar");
+		btnCancelar = new JButton ("Cancelar");	
+		
+		path=new String();
+		
 		super.setLayout(new GridBagLayout());
 		
 		super.add (lNombre, new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,2) ,1,1) );
@@ -87,11 +100,46 @@ public class CrearTerreno extends JPanel {
 		super.add (lArea, new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2) ,1,1) );
 		super.add (tArea, new GridBagConstraints(1,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10) ,1,1) );
 		
-		super.add (btnAceptar, new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2) ,1,1) );
-		super.add (btnCancelar, new GridBagConstraints(1,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10) ,1,1) );
+		super.add(lImagenFinca,new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2),1,1) );
+		super.add(btnExaminar,new GridBagConstraints(1,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10),1,1) );
 		
-		super.add(scroll,new GridBagConstraints(3,0,2,5,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,2,10,10) ,1,1) );
+		super.add (btnAceptar, new GridBagConstraints(0,5,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,2) ,1,1) );
+		super.add (btnCancelar, new GridBagConstraints(1,5,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,10) ,1,1) );
 		
+		super.add(scroll,new GridBagConstraints(3,0,2,6,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,2,10,10) ,1,1) );
+		
+		
+		btnExaminar.addActionListener(this);
 	}
 
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		if(e.getSource()==btnExaminar){
+			
+			JFileChooser file=new JFileChooser();
+			int opcion=file.showOpenDialog(new JButton("Abrir"));
+			
+			if(opcion==JFileChooser.APPROVE_OPTION){
+				
+				path=file.getSelectedFile().getAbsolutePath();
+				
+				this.paintComponent(super.getGraphics());
+				
+			}
+
+		}
+		
+	}
+	
+	@Override
+	public void paintComponent(Graphics g){
+		
+		Dimension tamano=getSize();
+		ImageIcon fondo=new ImageIcon(path);
+		g.drawImage(fondo.getImage(), 0, 0, tamano.width, tamano.height, null);
+		Ventana.panel.sepaintComponent(g);
+		
+	}
 }

@@ -1,18 +1,22 @@
 package vistas;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class Ventana extends JFrame {
 	
+	public static JPanel panel;
 	// Constructores
 	public Ventana(){
+		
+		panel =new JPanel();
 		
 		try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ex) {}
 		
+		super.setContentPane(panel);
 		super.setTitle("SIPCOFFEE");
 		super.setVisible(true);
 		super.pack();
@@ -21,10 +25,13 @@ public class Ventana extends JFrame {
 	
 	public Ventana(String title){
 		
+		panel =new JPanel();
+		
 		try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ex) { } 
 		
+		super.setContentPane(panel);
 		super.setTitle(title);
 		super.pack();
 		super.setVisible(true);
