@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 import modelos.Rol;
@@ -46,11 +47,15 @@ public class AdminRol extends JPanel implements ActionListener {
 		
 		titulo = new Vector<String>();
 		titulo.add("Rol");
+		titulo.add("Activo");
 
 		data = adaptar(controlador.selectAll());
-		tModel = new DefaultTableModel(data,titulo);
-
-		tabla = new JTable(tModel);
+		
+		
+		//tModel = new DefaultTableModel(data,titulo);
+		
+		tabla = new JTable(new MyTableModel(titulo,data));
+		//tabla = new JTable(tModel);
 		scroll = new JScrollPane(tabla);
 		scroll.setPreferredSize(new Dimension(150,100));
 		
@@ -96,10 +101,66 @@ public class AdminRol extends JPanel implements ActionListener {
 	
 	private Vector<Object> adaptar(Vector<Object> data){
 		Vector<Object> retorno = new Vector<Object>();
+		Vector<Object> temp;
 		for(Object rol : data){
-			retorno.add( new Rol(rol.toString()).toVector() );
+			temp = new Vector<Object>();
+			temp.add( rol.toString() );
+			temp.add( new Boolean(true) );
+			retorno.add(temp);
+			temp = null;
 		}
 		return retorno;
+	}
+	
+	//Clase Privada
+	private class MyTableModel extends AbstractTableModel {
+		
+		private Vector<String> columnNames;
+		private Vector<Object> data;
+		
+		//Constructor
+		private MyTableModel(Vector<String> columnNames,Vector<Object> data){
+			this.columnNames = columnNames;
+			this.data = data;
+		}
+
+		public int getColumnCount() {
+            return this.columnNames.size();
+        }
+ 
+        public int getRowCount() {
+            return data.size();
+        }
+ 
+        public String getColumnName(int col) {
+            return columnNames.get(col);
+        }
+ 
+        public Object getValueAt(int row, int col) {
+        	Vector<Object> temp = (Vector<Object>) data.get(row);
+            return temp.get(col);
+        }
+        
+        public Class getColumnClass(int c) {
+            return getValueAt(0, c).getClass();
+        }
+        
+        public boolean isCellEditable(int row, int col) {
+            if (col == 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+ 
+        public void setValueAt(Object value, int row, int col) {
+            Vector<Object> temp = new Vector<Object>();
+            temp.add(value);
+            data.add(temp);
+            temp = null;
+            fireTableCellUpdated(row, col);
+        }
+        
 	}
 	
 }

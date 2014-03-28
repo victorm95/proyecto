@@ -100,10 +100,10 @@ public class Menu extends JMenuBar implements ActionListener {
 		adminTerreno.addActionListener(this);
 		
 		//Menu Bloque
-		adminTerreno.addActionListener(this);
+		adminBloque.addActionListener(this);
 		
 		//Menu Parcela
-		adminTerreno.addActionListener(this);
+		adminParcela.addActionListener(this);
 		
 		//Menu Siembra
 		adminSiembra.addActionListener(this);
@@ -136,7 +136,7 @@ public class Menu extends JMenuBar implements ActionListener {
 		dialogo = null;
 		dialogo = new JDialog(ventana,true);
 		dialogo.setContentPane( panel );
-		dialogo.setTitle("Crear Terreno");
+		dialogo.setTitle("Administrar");
 		dialogo.setResizable(false);
 		dialogo.pack();
 		dialogo.setLocationRelativeTo(ventana);
