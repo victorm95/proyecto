@@ -10,6 +10,7 @@ public class Ventana extends JFrame {
 	// Constructores
 	public Ventana(){
 		
+		
 		panel =new JPanel();
 		
 		try {
@@ -37,5 +38,6 @@ public class Ventana extends JFrame {
 		super.setVisible(true);
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+
 
 }
