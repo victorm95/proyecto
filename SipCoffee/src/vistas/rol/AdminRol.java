@@ -17,9 +17,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import modelos.Rol;
 import controladores.RolController;
 
-public class CrearRol extends JPanel implements ActionListener {
+public class AdminRol extends JPanel implements ActionListener {
 
 	//Componentes Graficos
 	
@@ -40,13 +41,13 @@ public class CrearRol extends JPanel implements ActionListener {
 	private RolController controlador;
 	
 	//Constructor
-	public CrearRol(){
+	public AdminRol(){
 		controlador = new RolController();
 		
 		titulo = new Vector<String>();
 		titulo.add("Rol");
-		
-		data = controlador.all();
+
+		data = adaptar(controlador.selectAll());
 		tModel = new DefaultTableModel(data,titulo);
 
 		tabla = new JTable(tModel);
@@ -79,17 +80,26 @@ public class CrearRol extends JPanel implements ActionListener {
 
 		if(e.getSource() == btnGuardar){
 			
-			if( !tNombre.getText().equals("") && controlador.nuevo(tNombre.getText())  ){
+			if( !tNombre.getText().equals("") && controlador.insert(tNombre.getText())  ){
 				
 				JOptionPane.showMessageDialog(this, "El Rol  "+tNombre.getText()+" ha sido creado exitosamente.","Registro Exitoso",JOptionPane.INFORMATION_MESSAGE);
 				data.clear();
-				data = controlador.all();
+				data = adaptar(controlador.selectAll());
 				tModel.setDataVector(data, titulo);
 				tNombre.setText("");
 			}
 			
 		}else if(e.getSource() == btnCancelar){	}
 		
+	}
+	
+	
+	private Vector<Object> adaptar(Vector<Object> data){
+		Vector<Object> retorno = new Vector<Object>();
+		for(Object rol : data){
+			retorno.add( new Rol(rol.toString()).toVector() );
+		}
+		return retorno;
 	}
 	
 }

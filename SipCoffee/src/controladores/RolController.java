@@ -22,8 +22,8 @@ public class RolController {
 	
 	//Acciones
 	
-	public boolean nuevo(String rol){
-		if(this.rol.nuevo(rol)){
+	public boolean insert(String rol){
+		if(this.rol.insert(rol)){
 			return true;
 		}else{
 			return false;
@@ -31,8 +31,8 @@ public class RolController {
 	}
 	
 	
-	public Vector all(){
-		return this.rol.all();
+	public Vector selectAll(){
+		return this.rol.selectAll();
 	}
 	
 
