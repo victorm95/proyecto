@@ -11,7 +11,7 @@ public class Rol extends Conexion{
 	private int id;
 	private String rol;
 	
-	/*-----------Constructores-------*/
+	/*-----------Constructor-------*/
 	public Rol(){}
 	
 	public Rol(int id,String rol){
@@ -36,12 +36,11 @@ public class Rol extends Conexion{
 	
 	
 	/*---------------------------------|Acciones|------------------------------------*/
-	/** Crea un nuevo Rol */
+	/** Crea un nuevo Rol, recibe como parametro un String con el nombre del Rol. */
 	public boolean insert(String rol){
 		Connection conexion = (Connection)super.conectar();
 		try{
 			conexion.createStatement().executeUpdate("INSERT INTO Roles(nombre) VALUES('"+rol+"');");
-			conexion.close();
 			conexion.close();
 			return true;
 		}catch(Exception e){
