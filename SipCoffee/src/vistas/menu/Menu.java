@@ -16,7 +16,6 @@ import vistas.parcela.CrearParcela;
 import vistas.rol.AdminRol;
 import vistas.siembra.CrearSiembra;
 import vistas.terreno.AdminTerreno;
-import vistas.terreno.EditarTerreno;
 
 public class Menu extends JMenuBar implements ActionListener {
 

@@ -50,6 +50,19 @@ public class Rol extends Conexion{
 	}
 	
 	
+	public boolean delete(String rol){
+		Connection conexion = (Connection)super.conectar();
+		try{
+			conexion.createStatement().executeUpdate("DELETE FROM Roles WHERE Nombre='"+rol+"';");
+			conexion.close();
+			return true;
+		}catch(Exception e){
+			System.out.println("Error: " + e.getMessage());
+			return false;
+		}
+	}
+	
+	
 	/** Consulta todos los Roles y los devuelve en forma de Vector */
 	public Vector<String> selectAll(){
 		ResultSet result;
@@ -68,14 +81,6 @@ public class Rol extends Conexion{
 			System.out.println("Error: " + e.getMessage() );
 			return null;
 		}
-	}
-	
-	
-
-	public Vector<String> toVector(){
-		Vector<String> v = new Vector<String>();
-		v.add(this.rol);
-		return v;
 	}
 	
 }

@@ -30,10 +30,15 @@ public class RolController {
 		}
 	}
 	
+	public boolean delete(String rol){
+		
+		if(this.rol.delete(rol)) return true;
+		else return false;
+			
+	}
 	
 	public Vector selectAll(){
 		return this.rol.selectAll();
 	}
 	
-
 }

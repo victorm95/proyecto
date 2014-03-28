@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,7 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
-import modelos.Rol;
 import controladores.RolController;
 
 public class AdminRol extends JPanel implements ActionListener {
@@ -30,14 +30,12 @@ public class AdminRol extends JPanel implements ActionListener {
 	private JTextField tNombre;
 	
 	private JButton btnGuardar;
+	private JButton btnEliminar;
 	private JButton btnCancelar;
 	
-	private JTable tabla;
-	private DefaultTableModel tModel;
+	private JList lista;
+	private Vector<String> data;
 	private JScrollPane scroll;
-	
-	private Vector<String> titulo;
-	private Vector<Object> data;
 	
 	private RolController controlador;
 	
@@ -45,27 +43,21 @@ public class AdminRol extends JPanel implements ActionListener {
 	public AdminRol(){
 		controlador = new RolController();
 		
-		titulo = new Vector<String>();
-		titulo.add("Rol");
-		titulo.add("Activo");
-
-		data = adaptar(controlador.selectAll());
+		data = controlador.selectAll();
+		lista = new JList( data );
 		
-		
-		//tModel = new DefaultTableModel(data,titulo);
-		
-		tabla = new JTable(new MyTableModel(titulo,data));
-		//tabla = new JTable(tModel);
-		scroll = new JScrollPane(tabla);
-		scroll.setPreferredSize(new Dimension(150,100));
+		scroll = new JScrollPane(lista);
+		scroll.setPreferredSize(new Dimension(100,90));
 		
 		lNombre = new JLabel("Nombre");
 		tNombre = new JTextField(10);
 		
 		btnGuardar = new JButton("Guargar");
+		btnEliminar = new JButton("Eliminar");
 		btnCancelar = new JButton("Cancelar");
 				
 		btnGuardar.addActionListener(this);
+		btnEliminar.addActionListener(this);
 		btnCancelar.addActionListener(this);
 		
 		super.setLayout( new GridBagLayout() );
@@ -74,8 +66,8 @@ public class AdminRol extends JPanel implements ActionListener {
 		super.add(tNombre , new GridBagConstraints(0,1,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5 ) ,1,1) );
 		
 		super.add(btnGuardar , new GridBagConstraints(0,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
-		super.add(btnCancelar , new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
-				
+		super.add(btnEliminar , new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
+		super.add(btnCancelar , new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL, new Insets(2,10,2,5) ,1,1) );		
 		super.add(scroll, new GridBagConstraints(1,0,2,4,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,10) ,1,1) );
 		
 	}
@@ -88,10 +80,28 @@ public class AdminRol extends JPanel implements ActionListener {
 			if( !tNombre.getText().equals("") && controlador.insert(tNombre.getText())  ){
 				
 				JOptionPane.showMessageDialog(this, "El Rol  "+tNombre.getText()+" ha sido creado exitosamente.","Registro Exitoso",JOptionPane.INFORMATION_MESSAGE);
-				data.clear();
-				data = adaptar(controlador.selectAll());
-				tModel.setDataVector(data, titulo);
+				data.add( tNombre.getText() );
+				lista.updateUI();
 				tNombre.setText("");
+			}
+			
+		}else if(e.getSource() == btnEliminar){
+			
+			if( !lista.isSelectionEmpty() && controlador.delete(data.get(lista.getSelectedIndex())) ){
+				JOptionPane.showMessageDialog(this,
+						"El Rol " + data.get(lista.getSelectedIndex()) + " ha sido eliminado correctamente." ,
+						"Rol Eliminado." ,
+						JOptionPane.INFORMATION_MESSAGE
+				);
+				data.remove( lista.getSelectedIndex() );
+				lista.updateUI();
+				lista.clearSelection();
+			}else{
+				JOptionPane.showMessageDialog(this,
+						"Ocurrio un error al eliminar el Rol " + data.get(lista.getSelectedIndex()) + "." ,
+						"Rol Eliminado." ,
+						JOptionPane.ERROR_MESSAGE
+				);
 			}
 			
 		}else if(e.getSource() == btnCancelar){	}
@@ -105,7 +115,6 @@ public class AdminRol extends JPanel implements ActionListener {
 		for(Object rol : data){
 			temp = new Vector<Object>();
 			temp.add( rol.toString() );
-			temp.add( new Boolean(true) );
 			retorno.add(temp);
 			temp = null;
 		}
