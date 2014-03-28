@@ -15,7 +15,7 @@ import vistas.cosecha.CrearCosecha;
 import vistas.parcela.CrearParcela;
 import vistas.rol.AdminRol;
 import vistas.siembra.CrearSiembra;
-import vistas.terreno.CrearTerreno;
+import vistas.terreno.AdminTerreno;
 import vistas.terreno.EditarTerreno;
 
 public class Menu extends JMenuBar implements ActionListener {
@@ -153,7 +153,7 @@ public class Menu extends JMenuBar implements ActionListener {
 		
 		//Validacion para Terreno
 		if(e.getSource() == adminTerreno){
-			crearDialogo( new CrearTerreno() );
+			crearDialogo( new AdminTerreno() );
 		}
 		//Fin de Terreno
 		
