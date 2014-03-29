@@ -49,6 +49,19 @@ public class Rol extends Conexion{
 		}
 	}
 	
+	/** Actualiza un campo de la tabla Rol. Recibe como parametros el rol antiguo y el nuevo rol. */
+	public boolean update(String antiguo , String nuevo){
+		Connection conexion = (Connection)super.conectar();
+		try{
+			conexion.createStatement().executeUpdate("UPDATE Roles SET Nombre='"+nuevo+"' WHERE Nombre='"+antiguo+"';");
+			conexion.close();
+			return true;
+		}catch(Exception e){
+			System.out.println("Error: " + e.getMessage());
+			return false;
+		}
+	}
+	
 	
 	public boolean delete(String rol){
 		Connection conexion = (Connection)super.conectar();

@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `producto` (
 
 CREATE TABLE IF NOT EXISTS `roles` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(15) NOT NULL,
+  `Nombre` varchar(30) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 

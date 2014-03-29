@@ -23,18 +23,18 @@ public class RolController {
 	//Acciones
 	
 	public boolean insert(String rol){
-		if(this.rol.insert(rol)){
-			return true;
-		}else{
-			return false;
-		}
+		if(this.rol.insert(rol)) return true;
+		else return false;
+	}
+	
+	public boolean update(String antiguo , String nuevo){
+		if( this.rol.update(antiguo,nuevo) ) return true;
+		else return false;
 	}
 	
 	public boolean delete(String rol){
-		
 		if(this.rol.delete(rol)) return true;
 		else return false;
-			
 	}
 	
 	public Vector selectAll(){

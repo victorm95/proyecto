@@ -31,6 +31,7 @@ public class AdminRol extends JPanel implements ActionListener {
 	
 	private JButton btnGuardar;
 	private JButton btnEliminar;
+	private JButton btnEditar;
 	private JButton btnCancelar;
 	
 	private JList lista;
@@ -54,10 +55,12 @@ public class AdminRol extends JPanel implements ActionListener {
 		
 		btnGuardar = new JButton("Guargar");
 		btnEliminar = new JButton("Eliminar");
+		btnEditar = new JButton("Editar");
 		btnCancelar = new JButton("Cancelar");
 				
 		btnGuardar.addActionListener(this);
 		btnEliminar.addActionListener(this);
+		btnEditar.addActionListener(this);
 		btnCancelar.addActionListener(this);
 		
 		super.setLayout( new GridBagLayout() );
@@ -66,8 +69,10 @@ public class AdminRol extends JPanel implements ActionListener {
 		super.add(tNombre , new GridBagConstraints(0,1,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5 ) ,1,1) );
 		
 		super.add(btnGuardar , new GridBagConstraints(0,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
-		super.add(btnEliminar , new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
-		super.add(btnCancelar , new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL, new Insets(2,10,2,5) ,1,1) );		
+		super.add(btnEditar , new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
+		super.add(btnEliminar , new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL, new Insets(2,10,2,5) ,1,1) );
+		super.add(btnCancelar , new GridBagConstraints(0,5,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,10,5) ,1,1) );
+		
 		super.add(scroll, new GridBagConstraints(1,0,2,4,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,10) ,1,1) );
 		
 	}
@@ -96,12 +101,41 @@ public class AdminRol extends JPanel implements ActionListener {
 				data.remove( lista.getSelectedIndex() );
 				lista.updateUI();
 				lista.clearSelection();
+				
 			}else{
 				JOptionPane.showMessageDialog(this,
 						"Ocurrio un error al eliminar el Rol " + data.get(lista.getSelectedIndex()) + "." ,
 						"Rol Eliminado." ,
 						JOptionPane.ERROR_MESSAGE
 				);
+			}
+			
+		}else if(e.getSource() == btnEditar){
+			
+			if( !lista.isSelectionEmpty() ){
+				
+				String nuevo = JOptionPane.showInputDialog(this,"Ingrese el nuevo valor para " + data.get(lista.getSelectedIndex()) , data.get(lista.getSelectedIndex()) );
+				
+				if( controlador.update( data.get(lista.getSelectedIndex()) , nuevo) ){
+					JOptionPane.showMessageDialog(
+							this , 
+							"El Rol " + data.get(lista.getSelectedIndex()) + " ha sido actualizado a " + nuevo + "." ,
+							"Rol Editado exitosamente" ,
+							JOptionPane.INFORMATION_MESSAGE
+					);
+					
+					data.set(lista.getSelectedIndex(), nuevo);
+					lista.updateUI();
+					
+				}else{
+					JOptionPane.showMessageDialog(
+							this , 
+							"Ocurrio un error al actualizar el Rol " + data.get(lista.getSelectedIndex()) ,
+							"Rol Editado exitosamente" ,
+							JOptionPane.ERROR_MESSAGE
+					);
+				}
+				
 			}
 			
 		}else if(e.getSource() == btnCancelar){	}
