@@ -3,8 +3,6 @@ package vistas;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.plaf.synth.SynthLookAndFeel;
 
 public class Ventana extends JFrame {
 	
@@ -16,15 +14,11 @@ public class Ventana extends JFrame {
 		panel =new JPanel();
 		
 		try {
-            //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			SynthLookAndFeel look = new SynthLookAndFeel();
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			/*SynthLookAndFeel look = new SynthLookAndFeel();
 			look.load(Ventana.class.getResourceAsStream("lookAndFeel.xml"),Ventana.class);
-			UIManager.setLookAndFeel(look);
-        } catch (Exception ex) {
-        	try {
-				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			}catch (Exception e) {}
-        }
+			UIManager.setLookAndFeel(look);*/
+        } catch (Exception ex) { }
 		
 		super.setContentPane(panel);
 		super.setTitle("SIPCOFFEE");
