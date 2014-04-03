@@ -3,6 +3,8 @@ package vistas.menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -93,6 +95,19 @@ public class Menu extends JMenuBar implements ActionListener {
 		rol.add(adminRol);
 		
 		
+		
+		/*-----------------------------Iconos-------------------------------*/
+		rol.setIcon( new ImageIcon(getClass().getResource("../img/rol.png")) );
+		salir.setIcon( new ImageIcon(getClass().getResource("../img/salir.png")) );
+		
+		adminTerreno.setIcon( new ImageIcon(getClass().getResource("../img/admin.png")) );
+		adminBloque.setIcon( new ImageIcon(getClass().getResource("../img/admin.png")) );
+		adminParcela.setIcon( new ImageIcon(getClass().getResource("../img/admin.png")) );
+		adminSiembra.setIcon( new ImageIcon(getClass().getResource("../img/admin.png")) );
+		adminCosecha.setIcon( new ImageIcon(getClass().getResource("../img/admin.png")) );
+		adminRol.setIcon( new ImageIcon(getClass().getResource("../img/admin.png")) );
+		
+		
 		/*------------------------------------------- Eventos ---------------------------------------------*/
 		
 		//Menu Terreno
@@ -131,9 +146,11 @@ public class Menu extends JMenuBar implements ActionListener {
 	
 	
 	//Metodo para generar los Dialogos
-	private void crearDialogo(JPanel panel){
+	private void crearDialogo(JPanel panel,String path){
 		dialogo = null;
 		dialogo = new JDialog(ventana,true);
+		if(path!=null || !path.equals(""))
+			dialogo.setIconImage( new ImageIcon(getClass().getResource(path)).getImage() );
 		dialogo.setContentPane( panel );
 		dialogo.setTitle("Administrar");
 		dialogo.setResizable(false);
@@ -152,38 +169,38 @@ public class Menu extends JMenuBar implements ActionListener {
 		
 		//Validacion para Terreno
 		if(e.getSource() == adminTerreno){
-			crearDialogo( new AdminTerreno() );
+			crearDialogo( new AdminTerreno() , "" );
 		}
 		//Fin de Terreno
 		
 		
 		//Validacion para Bloque
 		if(e.getSource() == adminBloque){
-			crearDialogo( new CrearBloque() );
+			crearDialogo( new CrearBloque() , "" );
 		}
 		//Fin de Bloque
 		
 		
 		//Validacion para Parcela
 		if(e.getSource() == adminParcela){
-			crearDialogo( new CrearParcela() );
+			crearDialogo( new CrearParcela() , "" );
 		}
 		//Fin Parcela
 		
 		//alidacion para Siembra
 		if(e.getSource() == adminSiembra){
-			crearDialogo( new CrearSiembra() );
+			crearDialogo( new CrearSiembra() , "" );
 		}
 		
 		
 		//Validacion para cosecha
 		if(e.getSource() == adminCosecha){
-			crearDialogo( new CrearCosecha() );
+			crearDialogo( new CrearCosecha() , "" );
 		}
 		
 		//Validacion para Rol
 		if(e.getSource() == adminRol){
-			crearDialogo( new AdminRol() );
+			crearDialogo( new AdminRol() , "../img/rol.png" );
 		}
 		
 

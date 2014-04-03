@@ -1,16 +1,19 @@
 package vistas;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 public class Ventana extends JFrame {
 	
+	//Atributos
+	
 	public static JPanel panel;
+	
+	
 	// Constructores
 	public Ventana(){
-		
-		
 		panel =new JPanel();
 		
 		try {
@@ -25,6 +28,8 @@ public class Ventana extends JFrame {
 		super.setVisible(true);
 		super.pack();
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super.setIconImage(new ImageIcon(getClass().getResource("img/grano.png")).getImage() );
+		
 		}
 	
 	public Ventana(String title){

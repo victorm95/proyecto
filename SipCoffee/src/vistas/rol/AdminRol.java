@@ -1,5 +1,6 @@
 package vistas.rol;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,16 +9,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
 
 import controladores.RolController;
 
@@ -32,17 +33,21 @@ public class AdminRol extends JPanel implements ActionListener {
 	private JButton btnGuardar;
 	private JButton btnEliminar;
 	private JButton btnEditar;
-	private JButton btnCancelar;
 	
 	private JList lista;
 	private Vector<String> data;
 	private JScrollPane scroll;
+	
+	private JPanel pNuevo;
 	
 	private RolController controlador;
 	
 	//Constructor
 	public AdminRol(){
 		controlador = new RolController();
+		
+		pNuevo = new JPanel(new GridBagLayout());
+		pNuevo.setBorder( BorderFactory.createTitledBorder("Nuevo Rol") );
 		
 		data = controlador.selectAll();
 		lista = new JList( data );
@@ -56,24 +61,31 @@ public class AdminRol extends JPanel implements ActionListener {
 		btnGuardar = new JButton("Guargar");
 		btnEliminar = new JButton("Eliminar");
 		btnEditar = new JButton("Editar");
-		btnCancelar = new JButton("Cancelar");
+		
+		btnGuardar.setIcon( new ImageIcon(getClass().getResource("../img/guardar.png")) );
+		btnEditar.setIcon( new ImageIcon(getClass().getResource("../img/editar.png")) );
+		btnEliminar.setIcon( new ImageIcon(getClass().getResource("../img/eliminar.png")) );
 				
 		btnGuardar.addActionListener(this);
 		btnEliminar.addActionListener(this);
 		btnEditar.addActionListener(this);
-		btnCancelar.addActionListener(this);
 		
 		super.setLayout( new GridBagLayout() );
 		
-		super.add(lNombre , new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,5) , 1,1) );
-		super.add(tNombre , new GridBagConstraints(0,1,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5 ) ,1,1) );
+		//super.add(lNombre , new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,5) , 1,1) );
+		//super.add(tNombre , new GridBagConstraints(0,1,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5 ) ,1,1) );
 		
-		super.add(btnGuardar , new GridBagConstraints(0,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
+		pNuevo.add(lNombre,new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,2) ,1,1) );
+		pNuevo.add(tNombre,new GridBagConstraints(0,1,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,2) ,1,1) );
+		pNuevo.add(btnGuardar,new GridBagConstraints(0,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,2) ,1,1) );
+		
+		super.add(pNuevo,new GridBagConstraints(0,0,1,2,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,5) ,1,1) );
+		
+		//super.add(btnGuardar , new GridBagConstraints(0,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
 		super.add(btnEditar , new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
-		super.add(btnEliminar , new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL, new Insets(2,10,2,5) ,1,1) );
-		super.add(btnCancelar , new GridBagConstraints(0,5,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,10,5) ,1,1) );
+		super.add(btnEliminar , new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL, new Insets(2,10,10,5) ,1,1) );
 		
-		super.add(scroll, new GridBagConstraints(1,0,2,4,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,10) ,1,1) );
+		super.add(scroll, new GridBagConstraints(1,0,2,5,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,10,10) ,1,1) );
 		
 	}
 
@@ -138,8 +150,7 @@ public class AdminRol extends JPanel implements ActionListener {
 				
 			}
 			
-		}else if(e.getSource() == btnCancelar){	}
-		
+		}
 	}
 	
 	
