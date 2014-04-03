@@ -12,9 +12,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import vistas.Ventana;
-import vistas.bloque.CrearBloque;
+import vistas.bloque.AdminBloque;
 import vistas.cosecha.CrearCosecha;
-import vistas.parcela.CrearParcela;
+import vistas.parcela.AdminParcela;
 import vistas.rol.AdminRol;
 import vistas.siembra.CrearSiembra;
 import vistas.terreno.AdminTerreno;
@@ -176,14 +176,14 @@ public class Menu extends JMenuBar implements ActionListener {
 		
 		//Validacion para Bloque
 		if(e.getSource() == adminBloque){
-			crearDialogo( new CrearBloque() , "" );
+			crearDialogo( new AdminBloque() , "" );
 		}
 		//Fin de Bloque
 		
 		
 		//Validacion para Parcela
 		if(e.getSource() == adminParcela){
-			crearDialogo( new CrearParcela() , "" );
+			crearDialogo( new AdminParcela() , "" );
 		}
 		//Fin Parcela
 		
