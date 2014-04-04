@@ -3,7 +3,6 @@ package vistas.menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JMenu;
@@ -61,8 +60,6 @@ public class Menu extends JMenuBar implements ActionListener {
 		archivo = new JMenu("Archivo");
 		salir = new JMenuItem("Salir");
 		
-		
-
 		//Menu de Terreno
 		terreno = new JMenu("Terreno");
 		adminTerreno = new JMenuItem("Administrar");

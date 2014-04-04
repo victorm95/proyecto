@@ -1,6 +1,6 @@
 package vistas.rol;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -39,6 +39,7 @@ public class AdminRol extends JPanel implements ActionListener {
 	private JScrollPane scroll;
 	
 	private JPanel pNuevo;
+	private JPanel pComponentes;
 	
 	private RolController controlador;
 	
@@ -49,11 +50,15 @@ public class AdminRol extends JPanel implements ActionListener {
 		pNuevo = new JPanel(new GridBagLayout());
 		pNuevo.setBorder( BorderFactory.createTitledBorder("Nuevo Rol") );
 		
+		pComponentes = new JPanel(new GridBagLayout());
+		pComponentes.setBorder( BorderFactory.createLineBorder( Color.GRAY) );
+		
 		data = controlador.selectAll();
 		lista = new JList( data );
+	
 		
 		scroll = new JScrollPane(lista);
-		scroll.setPreferredSize(new Dimension(100,90));
+		scroll.setPreferredSize(new Dimension(150,250));
 		
 		lNombre = new JLabel("Nombre");
 		tNombre = new JTextField(10);
@@ -72,20 +77,20 @@ public class AdminRol extends JPanel implements ActionListener {
 		
 		super.setLayout( new GridBagLayout() );
 		
-		//super.add(lNombre , new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,5) , 1,1) );
-		//super.add(tNombre , new GridBagConstraints(0,1,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5 ) ,1,1) );
+		pNuevo.add(lNombre,new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,10,10) ,1,1) );
+		pNuevo.add(tNombre,new GridBagConstraints(0,1,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(4,4,4,4) ,1,1) );
+		pNuevo.add(btnGuardar,new GridBagConstraints(0,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(4,4,4,4) ,1,1) );
 		
-		pNuevo.add(lNombre,new GridBagConstraints(0,0,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,2) ,1,1) );
-		pNuevo.add(tNombre,new GridBagConstraints(0,1,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,2) ,1,1) );
-		pNuevo.add(btnGuardar,new GridBagConstraints(0,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,2,2,2) ,1,1) );
+		pComponentes.add(btnEditar,new GridBagConstraints(0,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(20,20,5,20) ,1,1) );
+		pComponentes.add(btnEliminar,new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(5,20,20,20) ,1,1) );
 		
-		super.add(pNuevo,new GridBagConstraints(0,0,1,2,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,2,5) ,1,1) );
+		pComponentes.add(pNuevo,new GridBagConstraints(0,0,1,2,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(15,15,7,10) ,1,1) );
+		super.add(pComponentes, new GridBagConstraints(0,0,1,5,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(40,40,40,30) ,1,1) );
 		
-		//super.add(btnGuardar , new GridBagConstraints(0,2,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
-		super.add(btnEditar , new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
-		super.add(btnEliminar , new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL, new Insets(2,10,10,5) ,1,1) );
+		//super.add(btnEditar , new GridBagConstraints(0,3,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(2,10,2,5) ,1,1) );
+		//super.add(btnEliminar , new GridBagConstraints(0,4,1,1,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL, new Insets(2,10,10,5) ,1,1) );
 		
-		super.add(scroll, new GridBagConstraints(1,0,2,5,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(10,10,10,10) ,1,1) );
+		super.add(scroll, new GridBagConstraints(1,0,2,5,0,0,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(30,20,30,30) ,1,1) );
 		
 	}
 
@@ -117,7 +122,7 @@ public class AdminRol extends JPanel implements ActionListener {
 			}else{
 				JOptionPane.showMessageDialog(this,
 						"Ocurrio un error al eliminar el Rol " + data.get(lista.getSelectedIndex()) + "." ,
-						"Rol Eliminado." ,
+						"Error al eliminar el Rol" ,
 						JOptionPane.ERROR_MESSAGE
 				);
 			}
