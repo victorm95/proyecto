@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<synth>  
+  
+  	<!-- Estilos para el MenuBar -->
+  	<style id="menuBar">
+  		<opaque value="true"/>
+  		<state>
+            <color value="#7db9e8" type="BACKGROUND"/>
+        </state>
+  	</style>
+  	<bind style="menuBar" type="region" key="MENUBAR"/>
+  	<!-- Fin estilos del MenuBar -->
+  
+	<!-- Estilo para el Menu -->
+    <style id="menu">
+        <opaque value="true"/>
+    	<font name="Arial" size="16"/>
+    	<insets top="2" bottom="2" left="5" right="5"/>
+    	
+    	<state value="MOUSE_OVER">
+            <color value="#7db9e8" type="BACKGROUND"/>
+        </state>
+    	
+        <state value="MOUSE_OVER">
+            <color value="BLACK" type="BACKGROUND"/>
+        </state>
+    </style>
+    <bind style="menu" type="region" key="MENU"/>
+    <!-- Fin del estilo del Menu -->
+    
+	<!-- Estilo para los Item del Menu -->
+    <style id="menuItem">
+    
+        <opaque value="true"/>
+    	<font name="Arial" size="16"/>
+    	<insets top="4" bottom="4" left="4" right="4"/>
+    	
+        <state>
+             <color value="#7db9e8" type="BACKGROUND"/>
+        </state>
+        
+        <state value="MOUSE_OVER">
+            <color value="#7db9d9" type="BACKGROUND"/>
+        </state>
+        <defaultsProperty key="EaSynth.menuitem.arc.width" type="integer" value="9"/>
+    </style>
+    
+    <bind style="menuItem" type="region" key="MENUITEM"/>
+    <!-- Fin del estilo de los Item del Menu -->
+    
+    <!-- Estilos para los Botones -->
+    <style id="boton">
+    	<opaque value="true"/>
+    	<font name="Arial" size="16"/>
+    	<insets top="5" bottom="5" left="5" right="5" />
+    	
+    	<state>
+    		<color value="#207ce5" type="BACKGROUND"/>
+    	</state>
+    	
+    	<state value="MOUSE_OVER">
+    		<color value="#006Dc5" type="BACKGROUND"/>
+    	</state>
+    	
+    	<state value="PRESSED">
+    		<color value="#006Db5" type="BACKGROUND"/>
+    	</state>
+    	
+    </style>
+    <bind style="boton" type="region" key="BUTTON"/>
+    <!-- Fin estilos Botones -->
+    
+    <!-- Estilos para el textField -->
+    <style id="textField">
+    	<opaque value="true"/>
+    	<font name="Arial" size="14"/>
+    	<insets top="4" bottom="4" left="4" right="4"/>
+    	
+    	<state>
+    		
+    	</state>
+    	
+    	<bind style="textField" type="region" key="TEXTFIELD"/>
+    </style>
+    <!-- Fin estilos textField -->
+    
+</synth>

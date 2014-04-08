@@ -11,47 +11,34 @@ import com.mysql.jdbc.ResultSet;
 public class RolController {
 	
 	//Atributos
-	private Conexion driver;
-	private Connection conexion; 
+	Rol rol;
 	
 	//Constructor
 	public RolController(){
-		driver = new Conexion("localhost","","","test");
+		rol = new Rol();
 	}
 	
 	
 	
 	//Acciones
 	
-	/** Consulta todos los Roles y los devuelve en forma de Vector */
-	public Vector all(){
-		ResultSet result;
-		Vector<Vector> retorno;
-		try{
-			conexion = (Connection)driver.conectar();
-			retorno = new Vector<Vector>();
-			result = (ResultSet)conexion.createStatement().executeQuery("SELECT * FROM Rol;");
-			
-			
-			while(result.next()){
-				retorno.add( new Rol(result.getInt("Id") , result.getString("Nombre")).toVector() );
-			}
-				
-			return retorno;
-		}catch(Exception e){
-			System.out.println("Error: " + e.getMessage() );
-			return null;
-		}
+	public boolean insert(String rol){
+		if(this.rol.insert(rol)) return true;
+		else return false;
 	}
 	
+	public boolean update(String antiguo , String nuevo){
+		if( this.rol.update(antiguo,nuevo) ) return true;
+		else return false;
+	}
 	
-	/*
+	public boolean delete(String rol){
+		if(this.rol.delete(rol)) return true;
+		else return false;
+	}
 	
-	private class Rol extends Vector{
-		private Rol(int id,String rol){
-			super.add(id);
-			super.add(rol);
-		}
-	}*/
-
+	public Vector selectAll(){
+		return this.rol.selectAll();
+	}
+	
 }
